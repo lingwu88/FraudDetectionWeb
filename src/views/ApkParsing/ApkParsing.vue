@@ -1,10 +1,10 @@
-<script lang="ts" setup>
-
+<script  setup>
+import Upload from '@/views/ApkParsing/Upload.vue'
 </script>
 
 <template>
     <page-contain title="Apk解析">
-        1.上传文件
+        <Upload></Upload>
         2.获取报告
     </page-contain>
 </template>
