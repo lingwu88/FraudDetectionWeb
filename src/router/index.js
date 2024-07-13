@@ -13,10 +13,13 @@ const router = createRouter({
           path: '/IntroduceManage',
           component: () => import('@/views/IntroduceManage/IntroduceManage.vue')
         },
-        
         {
           path: '/ApkParsing',
           component: () => import('@/views/ApkParsing/ApkParsing.vue')
+        },
+        {
+          path: '/HistoryReport',
+          component: () => import('@/views/HistoryReport/HistoryReport.vue')
         }
       ]
     }
