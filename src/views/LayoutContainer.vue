@@ -30,7 +30,7 @@ onMounted(() => {})
           <el-icon><Files /></el-icon>
           <span>APK解析</span>
         </el-menu-item>
-        <el-menu-item index="/ApkParsing">
+        <el-menu-item index="/HistoryReport">
           <el-icon><Files /></el-icon>
           <span>历史报告</span>
         </el-menu-item>
