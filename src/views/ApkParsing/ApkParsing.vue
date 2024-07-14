@@ -5,7 +5,6 @@ import Upload from '@/views/ApkParsing/Upload.vue'
 <template>
     <page-contain title="Apk解析">
         <Upload></Upload>
-        2.获取报告
     </page-contain>
 </template>
 
