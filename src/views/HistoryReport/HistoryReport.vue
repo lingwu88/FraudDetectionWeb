@@ -2,8 +2,11 @@
 import { ref , reactive,onMounted} from 'vue'
 import PageContain from '@/components/PageContain.vue'
 import ReportCard from '@/components/ReportCard.vue'
+import {getReport} from '@/api/api.js'
 
 const buttonType=ref(['','','',''])
+const params=new FormData()
+params.append('id','AZCifg3uSZq0HOVfb5mX')
 
 const fileForm=ref({
         time:'',
@@ -84,6 +87,11 @@ const timeType =(data)=>{
 // }
 onMounted(()=>{
         list.value=reportList.value
+        getReport(params).then(res=>{
+                console.log(res);
+        }).catch(err=>{
+
+        })
 })
 const search = ()=>{
         list.value = reportList.value.filter(item=>{                          //keyword
@@ -144,6 +152,7 @@ const search = ()=>{
                         <el-button
                         type="primary"
                         @click="search"
+                        class="searchButton"
                         >
                         搜索
                         </el-button>
@@ -159,5 +168,8 @@ const search = ()=>{
 }
 .formItem{
         width: 10%;
+}
+.searchButton{
+        text-align: center;
 }
 </style>

@@ -4,6 +4,9 @@ import { useTokenStore } from '@/stores'
 export const uploadFile = (data,config)=>{
   return request.post('/files/upload',data,config)
 }
+export const getReport =(data)=>{
+  return request.get('/reports/get',data)
+}
 // const tokenStore = useTokenStore()
 
 // // 获取密钥
