@@ -1,6 +1,7 @@
 <script setup>
 import {ref} from 'vue'
 import {uploadFile} from '@/api/api.js'
+import axios from 'axios'
 defineOptions({name:'Upload'})
 
 const formData = new FormData()
@@ -19,7 +20,7 @@ const fileUpload=(()=>{
       progressPercent.value=Number(((progressEvent.loaded/progressEvent.total)*90).toFixed(2))
     }
   }
-  uploadFile(formData).then(res=>{
+  axios.post('http://m1.oboard.eu.org:5000/files/upload',formData).then(res=>{
     progressPercent.value=100
     console.log(res);
   }).catch(err=>{
