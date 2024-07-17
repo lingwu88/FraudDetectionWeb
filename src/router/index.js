@@ -20,6 +20,10 @@ const router = createRouter({
         {
           path: '/HistoryReport',
           component: () => import('@/views/HistoryReport/HistoryReport.vue')
+        },
+        {
+          path: '/ApkInformation',
+          component: () => import('@/views/result/ApkInformation.vue')
         }
       ]
     }

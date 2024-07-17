@@ -3,6 +3,9 @@ import Upload from '@/views/ApkParsing/Upload.vue'
 import UrlUpload from '@/views/ApkParsing/UrlUpload.vue'
 import {ref} from 'vue'
 const activeName=ref('first')
+const handleClick=(()=>{
+    
+})
 </script>
 
 <template>

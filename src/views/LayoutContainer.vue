@@ -34,6 +34,10 @@ onMounted(() => {})
           <el-icon><Files /></el-icon>
           <span>历史报告</span>
         </el-menu-item>
+        <el-menu-item index="/ApkInformation">
+          <el-icon><Files /></el-icon>
+          <span>分析结果</span>
+        </el-menu-item>
       </el-menu>
     </el-aside>
     <el-container>
