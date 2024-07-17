@@ -34,6 +34,10 @@ onMounted(() => {})
           <el-icon><Files /></el-icon>
           <span>历史报告</span>
         </el-menu-item>
+        <el-menu-item index="/ApkList">
+          <el-icon><Files /></el-icon>
+          <span>黑白名单列表</span>
+        </el-menu-item>
       </el-menu>
     </el-aside>
     <el-container>
