@@ -6,22 +6,26 @@ onMounted(() => {
   GetList();
 });
 
-const SearchKey = ref('');
-const SearchInput = ref('');
+const SearchKey = ref("");
+const SearchInput = ref("");
+// 要渲染的数据
 const FileList = ref([]);
+// 黑名单列表
+const BlackList = ref([]);
+
 const TypeList = ref([
   {
-    value: 'md5',
-    label: 'md5'
+    value: "md5",
+    label: "md5",
   },
   {
-    value: 'name',
-    label: 'app名称'
+    value: "name",
+    label: "app名称",
   },
   {
-    value: 'package',
-    label: '下载包名'
-  }
+    value: "package",
+    label: "下载包名",
+  },
 ]);
 
 const GetList = () => {
@@ -30,10 +34,10 @@ const GetList = () => {
     .then((response) => {
       const list = response.data.replace(/NaN/g, ' "" ');
       const filelist = JSON.parse(list).slice(0, 100);
-      FileList.value = filelist.map((obj) => {
+      BlackList.value = filelist.map((obj) => {
         return obj.result === "black" ? { ...obj, result: "高危应用" } : obj;
       });
-      console.log(FileList.value);
+      FileList.value = BlackList.value;
     })
     .catch((error) => {
       console.error(error);
@@ -41,14 +45,21 @@ const GetList = () => {
 };
 
 const Search = () => {
-  console.log(SearchKey.value)
-  console.log(SearchInput.value)
-}
+  console.log(SearchKey.value);
+  console.log(SearchInput.value);
+  // 使用反引号和正确的变量插值语法
+  axios
+    .get(`https://fu.oboard.eu.org/lists/search?name=${SearchInput.value}&type=${SearchKey.value}`)
+    .then((response) => {
+      console.log(response);
+    })
+    .catch((error) => {
+      console.error(error);
+    });
+};
 
-const Refresh = () => {
 
-}
-
+const Refresh = () => {};
 </script>
 
 <template>
@@ -56,7 +67,11 @@ const Refresh = () => {
     <!-- 头部搜索区域 -->
     <el-form inline>
       <el-form-item label="搜索类别：">
-        <el-select  placeholder="请选择" v-model="SearchKey" style="width: 200px;">
+        <el-select
+          placeholder="请选择"
+          v-model="SearchKey"
+          style="width: 200px"
+        >
           <el-option
             v-for="item in TypeList"
             :key="item.value"
