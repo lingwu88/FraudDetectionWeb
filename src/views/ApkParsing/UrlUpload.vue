@@ -1,7 +1,11 @@
 <script setup>
+import {ref} from 'vue'
 defineOptions({name:'UrlUpload'})
-const upload=()=>{
+const textarea=ref('')
 
+const upload=()=>{
+  const formData=new FormData()
+  formData.append()
 }
 </script>
 

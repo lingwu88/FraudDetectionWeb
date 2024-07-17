@@ -1,27 +1,26 @@
 <script setup>
 import {ref} from 'vue'
 import {uploadFile} from '@/api/api.js'
-import axios from 'axios'
+import UploadProgress from '@/components/UploadProgress.vue'
 defineOptions({name:'Upload'})
 
-const formData = new FormData()
 const fileList=ref([])
 const uploadFileList=ref([])
-const progressPercent=ref()
+const progress=ref()
 
 const fileUpload=(()=>{
+  const formData = new FormData()
   uploadFileList.value.forEach(file=>{
     formData.append('file',file.raw)
   })
   const config = {
     onUploadProgress:(progressEvent) =>{
-      //progressEvent.loaded:已上传文件大小
-      //progressEvent.total：被上传文件的总大小
-      progressPercent.value=Number(((progressEvent.loaded/progressEvent.total)*90).toFixed(2))
+      //progressEvent.loaded:已上传文件大小 progressEvent.total：被上传文件的总大小
+      progress.value=Number(((progressEvent.loaded/progressEvent.total)*90).toFixed(2))
     }
   }
-  axios.post('http://m1.oboard.eu.org:5000/files/upload',formData).then(res=>{
-    progressPercent.value=100
+ uploadFile(formData,config).then(res=>{
+    progress.value=100
     console.log(res);
   }).catch(err=>{
     console.log(err);
@@ -31,7 +30,6 @@ const beforeUpload=((file)=>{
     console.log(file);
 })
 const getList=((file,filelist)=>{
-    console.log(file);
     const fileList={}
     for(const key in file){
         fileList[key]=file[key]
@@ -83,13 +81,7 @@ const getList=((file,filelist)=>{
                     width="150px"
                     prop="address"
                     label="状态">
-                    <el-progress
-                    :color="blue"
-                    :text-inside="true"
-                    :stroke-width="15"
-                    :percentage="progressPercent"
-                    >
-                  </el-progress>
+                  <UploadProgress :progressPercent="progress"></UploadProgress>
                 </el-table-column>
         </el-table>
     </template>
@@ -115,8 +107,6 @@ const getList=((file,filelist)=>{
   }
   .bg-purple-dark {
     background: #99a9bf;
-  }
-  .bg{
   }
   .bg-purple-light {
     background: #e5e9f2;
