@@ -49,9 +49,10 @@ const Search = () => {
   console.log(SearchInput.value);
   // 使用反引号和正确的变量插值语法
   axios
-    .get(`https://fu.oboard.eu.org/lists/search?name=${SearchInput.value}&type=${SearchKey.value}`)
+    .get(`https://fu.oboard.eu.org/lists/search?value=${SearchInput.value}&type=${SearchKey.value}`)
     .then((response) => {
-      console.log(response);
+      console.log(response.data);
+      FileList.value = response.data
     })
     .catch((error) => {
       console.error(error);
@@ -59,7 +60,9 @@ const Search = () => {
 };
 
 
-const Refresh = () => {};
+const Refresh = () => {
+  FileList.value = BlackList.value
+};
 </script>
 
 <template>

@@ -11,9 +11,6 @@ defineProps({
     <template #header>
       <div class="header">
         <span>{{ title }}</span>
-        <!-- <div class="extra">
-            <el-button></el-button>
-        </div> -->
       </div>
     </template>
     <slot></slot>

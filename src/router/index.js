@@ -7,24 +7,20 @@ const router = createRouter({
     {
       path: '/',
       component: () => import('@/views/LayoutContainer.vue'),
-      redirect: '/IntroduceManage',
+      redirect: '/ApkParsing',
       children: [
         {
-          path: '/IntroduceManage',
-          component: () => import('@/views/IntroduceManage/IntroduceManage.vue')
+          path: '/PlatformIntroduce',
+          component: () => import('@/views/PlatformIntroduce/PlatformIntroduce.vue')
         },
         {
           path: '/ApkParsing',
           component: () => import('@/views/ApkParsing/ApkParsing.vue')
         },
         {
-          path: '/HistoryReport',
-          component: () => import('@/views/HistoryReport/HistoryReport.vue')
-        },
-        {
           path: '/ApkList',
           component: () => import('@/views/ApkList/ApkList.vue')
-        },
+        }
       ]
     }
   ]

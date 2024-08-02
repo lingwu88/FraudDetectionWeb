@@ -34,7 +34,7 @@ const changeFile = (file) => {
   formData.append("file", file.raw); // 传文件
   axios({
     method: "post",
-    url: `https://fu.oboard.eu.org/files/upload`, //此处为往后台发送请求的地址
+    url: `https://fu.oboard.eu.org/files/upload/qrcode`, //此处为往后台发送请求的地址
     data: formData,
   }).then((res) => {
     // 处理组件加载中
@@ -44,8 +44,7 @@ const changeFile = (file) => {
 
     if (res.status === 200) {
       axios
-        // .get(`https://fu.oboard.eu.org/reports/get?id=${fileId.value}`)
-        .get(`https://fu.oboard.eu.org/reports/get?id=AZDJL89Sh6wn_HCy2Qg9`)  
+        .get(`https://fu.oboard.eu.org/reports/get?id=${fileId.value}`)
         .then((response) => {
           dialogTableVisible.value = !dialogTableVisible.value;
 
@@ -89,7 +88,7 @@ const changeFile = (file) => {
       >
         <i class="el-icon-upload"></i>
         <div class="el-upload__text"><em>点击上传</em></div>
-        <div class="el-upload__tip" slot="tip">只能apk文件</div>
+        <div class="el-upload__tip" slot="tip">只能上传图片</div>
       </el-upload>
 
       <!-- 检测报告弹出框 -->

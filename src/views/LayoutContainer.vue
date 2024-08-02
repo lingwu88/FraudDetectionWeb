@@ -1,14 +1,11 @@
 <script setup>
-import {
-  Files,
-} from '@element-plus/icons-vue'
-import { onMounted } from 'vue'
-import { useRouter } from 'vue-router'
+import { Files } from "@element-plus/icons-vue";
+import { onMounted } from "vue";
+import { useRouter } from "vue-router";
 
-const router = useRouter()
+const router = useRouter();
 
-onMounted(() => {})
-
+onMounted(() => {});
 </script>
 
 <template>
@@ -22,17 +19,13 @@ onMounted(() => {})
         text-color="#fff"
         router
       >
-        <el-menu-item index="/IntroduceManage">
+        <el-menu-item index="/PlatformIntroduce">
           <el-icon><Files /></el-icon>
           <span>平台介绍</span>
         </el-menu-item>
         <el-menu-item index="/ApkParsing">
           <el-icon><Files /></el-icon>
           <span>APK解析</span>
-        </el-menu-item>
-        <el-menu-item index="/HistoryReport">
-          <el-icon><Files /></el-icon>
-          <span>历史报告</span>
         </el-menu-item>
         <el-menu-item index="/ApkList">
           <el-icon><Files /></el-icon>
@@ -42,6 +35,7 @@ onMounted(() => {})
     </el-aside>
     <el-container>
       <el-header>
+        <h3 style="text-align: center; margin-right: 450px;">诈骗终结者——涉诈APK智能识别系统</h3>
         <div class="block" style="margin-right: 10px">
           <el-avatar
             :size="30"
@@ -63,7 +57,7 @@ onMounted(() => {})
     background-color: #232323;
     &__logo {
       height: 120px;
-      background: url('@/assets/logo.jpg') no-repeat center / 120px auto;
+      background: url("") no-repeat center / 120px auto;
     }
     .el-menu {
       border-right: none;
